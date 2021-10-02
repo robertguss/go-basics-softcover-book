@@ -306,7 +306,7 @@ func (g greeter) greet() {
 
 ## Wrap Up
 
-In this article, we learned how to create and work with functions in Go.
+In this chapter, we learned how to create and work with functions in Go.
 
 ## Additional Resources
 

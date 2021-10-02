@@ -293,7 +293,7 @@ You can find a list of all of the Unicode numbers [here](https://www.ascii-code.
 
 ## Wrap Up
 
-In this article, we learned how to create and work with loops in Go.
+In this chapter, we learned how to create and work with loops in Go.
 
 ## Additional Resources
 

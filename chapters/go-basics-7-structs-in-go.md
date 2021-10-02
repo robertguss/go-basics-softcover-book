@@ -386,7 +386,7 @@ You can read more about it here: [What is Blank Identifier(underscore) in Golang
 
 ## Wrap Up
 
-In this article, we learned how to create and work with structs in go.
+In this chapter, we learned how to create and work with structs in go.
 
 ## Additional Resources
 

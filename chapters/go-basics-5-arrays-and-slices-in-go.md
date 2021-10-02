@@ -459,7 +459,7 @@ values from it and append those values to `a`.
 
 ## Wrap Up
 
-In this article, we learned about how to create and work with arrays and slices in go.
+In this chapter, we learned about how to create and work with arrays and slices in go.
 
 ## Additional Resources
 
