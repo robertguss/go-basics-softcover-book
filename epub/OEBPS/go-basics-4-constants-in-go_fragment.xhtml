@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+        <!DOCTYPE html>
+
+        <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+          <title>Chapter 4</title>
+          <link rel="stylesheet" href="styles/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="styles/softcover.css" type="text/css" />
+          <link rel="stylesheet" href="styles/epub.css" type="text/css" />
+          <link rel="stylesheet" href="styles/custom.css" type="text/css"/>
+          <link rel="stylesheet" href="styles/custom_epub.css" type="text/css"/>
+          <link rel="stylesheet" type="application/vnd.adobe-page-template+xml" href="styles/page-template.xpgt" />
+        </head>
+
+        <body>
+          <div id="cid25" class="chapter"><h1><a href="go-basics-4-constants-in-go_fragment.xhtml#cid25" class="heading hyperref"><span class="number">Chapter 4 </span>Constants</a></h1>
+</div><div id="cid26" class="section"><h2><a href="go-basics-4-constants-in-go_fragment.xhtml#cid26" class="heading hyperref"><span class="number">4.1 </span>Naming convention</a></h2>
+<p>In many languages, <code>constants</code> are typically named with Capital letters.<span class="intersentencespace"></span> However, remember that in Go, anything that begins with a Capital letter will be exported.<span class="intersentencespace"></span> So unless you want to export a constant, you should follow the same naming conventions with constants as you do with variables.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">helloConst</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">"Hello!"</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T"</span><span class="p">,</span> <span class="nx">helloConst</span><span class="p">,</span> <span class="nx">helloConst</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  Hello!, string</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Constants cannot be altered or re-assigned, hence the name <code>constant</code>.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">helloConst</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">"Hello!"</span>
+  <span class="nx">helloConst</span> <span class="p">=</span> <span class="s">"Hi!"</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T"</span><span class="p">,</span> <span class="nx">helloConst</span><span class="p">,</span> <span class="nx">helloConst</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  cannot assign to helloConst</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Interestingly, <code>constants</code> in Go can be <code>shadowed</code> just like <a href="/go-basics-2-variables-in-go" rel="noopener">variables</a>.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">helloConst</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">"Hello!"</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">helloConst</span> <span class="p">=</span> <span class="s">"Hi!"</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T"</span><span class="p">,</span> <span class="nx">helloConst</span><span class="p">,</span> <span class="nx">helloConst</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  Hi!, string</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">helloConst</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">"Hello!"</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// const helloConst = "Hi!"</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T"</span><span class="p">,</span> <span class="nx">helloConst</span><span class="p">,</span> <span class="nx">helloConst</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  Hello!, string</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid27" class="section"><h2><a href="go-basics-4-constants-in-go_fragment.xhtml#cid27" class="heading hyperref"><span class="number">4.2 </span>Untyped constants</a></h2>
+<p>In the previous examples, I have been using <code>typed</code> constants.<span class="intersentencespace"></span> Meaning that I am explicitly declaring the type of a constant.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">helloConst</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">"Hi!"</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T"</span><span class="p">,</span> <span class="nx">helloConst</span><span class="p">,</span> <span class="nx">helloConst</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  Hi!, string</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>However, we can let the Go compiler infer the constant type, similar to how we declare variables with the <code>:=</code> operator.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">helloConst</span> <span class="p">=</span> <span class="s">"Hi!"</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T"</span><span class="p">,</span> <span class="nx">helloConst</span><span class="p">,</span> <span class="nx">helloConst</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  Hi!, string</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid28" class="section"><h2><a href="go-basics-4-constants-in-go_fragment.xhtml#cid28" class="heading hyperref"><span class="number">4.3 </span>Enumerated constants</a></h2>
+<p>In this next example, we are going to use a special symbol called <code>iota</code> which is a counter which we can use when creating <code>enumerated constants</code></p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">a</span> <span class="p">=</span> <span class="kc">iota</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T"</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  0, int</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>We can also declare multiple <code>constants</code> just like <code>variables</code> like so:</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">const</span><span class="p">(</span>
+  <span class="nx">a</span> <span class="p">=</span> <span class="kc">iota</span>
+  <span class="nx">b</span> <span class="p">=</span> <span class="kc">iota</span>
+  <span class="nx">c</span> <span class="p">=</span> <span class="kc">iota</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T\n"</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T\n"</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T\n"</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  0, int</span>
+<span class="cm">  1, int</span>
+<span class="cm">  2, int</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Another interesting thing we can do is allow the compiler to infer the other constants that follow the first constant declaration.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">const</span><span class="p">(</span>
+  <span class="nx">a</span> <span class="p">=</span> <span class="kc">iota</span>
+  <span class="nx">b</span>
+  <span class="nx">c</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T\n"</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T\n"</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T\n"</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  0, int</span>
+<span class="cm">  1, int</span>
+<span class="cm">  2, int</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p><code>iota</code> is scoped to the constant block in which it is used.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">const</span> <span class="p">(</span>
+	<span class="nx">a</span> <span class="p">=</span> <span class="kc">iota</span>
+	<span class="nx">b</span>
+	<span class="nx">c</span>
+<span class="p">)</span>
+
+<span class="kd">const</span> <span class="p">(</span>
+	<span class="nx">a2</span> <span class="p">=</span> <span class="kc">iota</span>
+	<span class="nx">b2</span>
+	<span class="nx">c2</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T\n"</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T\n"</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T\n"</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T\n"</span><span class="p">,</span> <span class="nx">a2</span><span class="p">,</span> <span class="nx">a2</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T\n"</span><span class="p">,</span> <span class="nx">b2</span><span class="p">,</span> <span class="nx">b2</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T\n"</span><span class="p">,</span> <span class="nx">c2</span><span class="p">,</span> <span class="nx">c2</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  0, int</span>
+<span class="cm">  1, int</span>
+<span class="cm">  2, int</span>
+<span class="cm">  0, int</span>
+<span class="cm">  1, int</span>
+<span class="cm">  2, int</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid29" class="section"><h2><a href="go-basics-4-constants-in-go_fragment.xhtml#cid29" class="heading hyperref"><span class="number">4.4 </span>Wrap Up</a></h2>
+<p>In this chapter, we learned about the following about constants in Go.</p>
+<ul>
+<li> Naming convention
+</li>
+<li> Typed constants
+</li>
+<li> Untyped constants
+</li>
+<li> Enumerated constants
+</li></ul>
+</div><div id="cid30" class="section"><h2><a href="go-basics-4-constants-in-go_fragment.xhtml#cid30" class="heading hyperref"><span class="number">4.5 </span>Additional Resources</a></h2>
+<ul>
+<li> <a href="https://golang.org/pkg" rel="noopener">Golang.org Packages</a>
+</li>
+<li> <a href="https://www.youtube.com/watch?v=YS4e4q9oBaU" rel="noopener">Free Code Camp - Learn Go Programming for Beginners</a>
+</li></ul>
+</div>
+        </body>
+        </html>

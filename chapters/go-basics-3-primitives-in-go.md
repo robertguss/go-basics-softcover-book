@@ -295,7 +295,7 @@ func main() {
 
 ## Wrap Up
 
-In this article, we learned about the following primitives in Go.
+In this chapter, we learned about the following primitives in Go.
 
 - Boolean Type
 - Integers (signed & unsigned)

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+        <!DOCTYPE html>
+
+        <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+          <title>Chapter 10</title>
+          <link rel="stylesheet" href="styles/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="styles/softcover.css" type="text/css" />
+          <link rel="stylesheet" href="styles/epub.css" type="text/css" />
+          <link rel="stylesheet" href="styles/custom.css" type="text/css"/>
+          <link rel="stylesheet" href="styles/custom_epub.css" type="text/css"/>
+          <link rel="stylesheet" type="application/vnd.adobe-page-template+xml" href="styles/page-template.xpgt" />
+        </head>
+
+        <body>
+          <div id="cid60" class="chapter"><h1><a href="go-basics-10-pointers-in-go_fragment.xhtml#cid60" class="heading hyperref"><span class="number">Chapter 10 </span>Pointers</a></h1>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="nx">a</span> <span class="o">:=</span> <span class="mi">14</span>
+	<span class="nx">b</span> <span class="o">:=</span> <span class="nx">a</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  14 14</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>In this first example, we declare the variable <code>a</code> to be an <code>int</code> of 14.<span class="intersentencespace"></span> Then we assign the variable <code>b</code> to be the value of <code>a</code>.<span class="intersentencespace"></span> Since Go is passing by <code>value</code> and not by <code>reference</code> in this example, the variable <code>b</code> is a copy of <code>a</code>.</p>
+<p>We can prove this with the following example.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="nx">a</span> <span class="o">:=</span> <span class="mi">14</span>
+	<span class="nx">b</span> <span class="o">:=</span> <span class="nx">a</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+
+	<span class="nx">a</span> <span class="p">=</span> <span class="mi">55</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  14 14</span>
+<span class="cm">  55 14</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid61" class="section"><h2><a href="go-basics-10-pointers-in-go_fragment.xhtml#cid61" class="heading hyperref"><span class="number">10.1 </span>Pointers</a></h2>
+<p>We can use <code>pointers</code> to make the <code>b</code> variable ‘point’ to the value of <code>a</code>.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="kd">var</span> <span class="nx">a</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">14</span>
+	<span class="kd">var</span> <span class="nx">b</span> <span class="o">*</span><span class="kt">int</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">a</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  14 0x40e020</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>The variable <code>b</code> now holds the location in memory where the value of the variable <code>a</code> is stored.<span class="intersentencespace"></span> So, the variable <code>b</code> now ‘points’ to the same location in memory as the variable <code>a</code>.</p>
+<p>Let’s break down this new syntax:</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">b</span> <span class="o">*</span><span class="kt">int</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">a</span>
+</pre></div></div>
+<p>The <code>*</code> symbol is a pointer, and the <code>&amp;</code> gives the memory address of the variable that comes after it.<span class="intersentencespace"></span> So in this example we are saying that variable <code>b</code> is a <code>pointer</code> to an <code>int</code> and it is equal to the same location in memory as the variable <code>a</code>.</p>
+</div><div id="cid62" class="section"><h2><a href="go-basics-10-pointers-in-go_fragment.xhtml#cid62" class="heading hyperref"><span class="number">10.2 </span>Dereferencing pointers</a></h2>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="kd">var</span> <span class="nx">a</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">14</span>
+	<span class="kd">var</span> <span class="nx">b</span> <span class="o">*</span><span class="kt">int</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">a</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="o">*</span><span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  14 14</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Notice in this example that the only change made from the previous example is this line:</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="o">*</span><span class="nx">b</span><span class="p">)</span>
+</pre></div></div>
+<p>Putting the <code>*</code> in front of the variable <code>b</code> is called <code>dereferencing</code>.<span class="intersentencespace"></span> This might seem a little confusing because in this line</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">b</span> <span class="o">*</span><span class="kt">int</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">a</span>
+</pre></div></div>
+<p>the <code>*</code> is a pointer.<span class="intersentencespace"></span> However, when you then use the same <code>*</code> in front
+of a pointer, it is called <code>dereferencing</code>, which means <strong>give me the value of this pointer</strong>.</p>
+<p>So to reiterate this example one more time:</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">b</span> <span class="o">*</span><span class="kt">int</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">a</span>
+</pre></div></div>
+<p>The <code>*</code> symbol is a pointer, and the <code>&amp;</code> gives the memory address of the variable that comes after it.<span class="intersentencespace"></span> So in this example we are saying that variable <code>b</code> is a <code>pointer</code> to an <code>int</code> and it is equal to the same location in memory as the variable <code>a</code>.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="o">*</span><span class="nx">b</span><span class="p">)</span>
+</pre></div></div>
+<p>The <code>*</code> symbol, in this case, says <code>dereference</code> the pointer <code>b</code> and give me the value that it is ‘pointing’ to.</p>
+<p>So if we modify our earlier example using <code>pointers</code> and <code>dereference</code> we see that by re-declaring the variable <code>a</code> changes the value of the variable <code>b</code> since <code>b</code> is ‘pointing’ to the same value as <code>a</code>.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="kd">var</span> <span class="nx">a</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">14</span>
+	<span class="kd">var</span> <span class="nx">b</span> <span class="o">*</span><span class="kt">int</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">a</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="o">*</span><span class="nx">b</span><span class="p">)</span>
+
+	<span class="nx">a</span> <span class="p">=</span> <span class="mi">55</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="o">*</span><span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  14 14</span>
+<span class="cm">  55 55</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid63" class="section"><h2><a href="go-basics-10-pointers-in-go_fragment.xhtml#cid63" class="heading hyperref"><span class="number">10.3 </span>Wrap Up</a></h2>
+<p>In this chapter, we learned how to create and work with pointers in Go.</p>
+</div><div id="cid64" class="section"><h2><a href="go-basics-10-pointers-in-go_fragment.xhtml#cid64" class="heading hyperref"><span class="number">10.4 </span>Additional Resources</a></h2>
+<ul>
+<li> <a href="https://gobyexample.com/" rel="noopener">Go by Example</a>
+</li>
+<li> <a href="https://www.youtube.com/watch?v=YS4e4q9oBaU" rel="noopener">Free Code Camp - Learn Go Programming for Beginners</a>
+</li></ul>
+</div>
+        </body>
+        </html>

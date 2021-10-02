@@ -360,7 +360,7 @@ func main() {
 
 ## Wrap Up
 
-In this article, we learned about how to create and work with maps in go.
+In this chapter, we learned about how to create and work with maps in go.
 
 ## Additional Resources
 

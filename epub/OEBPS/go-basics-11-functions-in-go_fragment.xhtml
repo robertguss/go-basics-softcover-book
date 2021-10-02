@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+        <!DOCTYPE html>
+
+        <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+          <title>Chapter 11</title>
+          <link rel="stylesheet" href="styles/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="styles/softcover.css" type="text/css" />
+          <link rel="stylesheet" href="styles/epub.css" type="text/css" />
+          <link rel="stylesheet" href="styles/custom.css" type="text/css"/>
+          <link rel="stylesheet" href="styles/custom_epub.css" type="text/css"/>
+          <link rel="stylesheet" type="application/vnd.adobe-page-template+xml" href="styles/page-template.xpgt" />
+        </head>
+
+        <body>
+          <div id="cid65" class="chapter"><h1><a href="go-basics-11-functions-in-go_fragment.xhtml#cid65" class="heading hyperref"><span class="number">Chapter 11 </span>Functions</a></h1>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">greeting</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">greeting</span><span class="p">(</span><span class="s">"Hello, World!"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  Hello, World!</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>In this example, we have a function called <code>greeting()</code> that takes a <code>msg</code> as a parameter, which is of type <code>string</code>.<span class="intersentencespace"></span> The function takes whatever <code>string</code> is passed into it and prints it out.</p>
+<p>Let’s break down the function syntax so we can see all the necessary parts when creating a function in Go.</p>
+<ol>
+<li> All functions in Go begin with the <code>func</code> keyword.<span class="intersentencespace"></span>
+</li>
+<li> After the <code>func</code> keyword comes the name of the function.<span class="intersentencespace"></span> Which is ‘greeting’ in the above example.<span class="intersentencespace"></span>
+</li>
+<li> After the name of the function, a pair of <code>()</code> contains the parameters the functions accepts, if there are any.<span class="intersentencespace"></span>
+</li>
+<li> After the <code>()</code> comes a pair of <code>{}</code> which contains the functions body, or the code the function executes.<span class="intersentencespace"></span>
+</li></ol>
+<blockquote class="quotation"><p class="quote">The <code>main()</code> function in Go is a special function as it is the entry point to every single Go application.<span class="intersentencespace"></span> It does not take any parameters and it cannot return anything.<span class="intersentencespace"></span></p>
+</blockquote><div class="center"><hr width="216.81pt" />
+</div></div><div id="cid66" class="section"><h2><a href="go-basics-11-functions-in-go_fragment.xhtml#cid66" class="heading hyperref"><span class="number">11.1 </span>Parameters of the same type</a></h2>
+<p>In this example, I have modified the <code>greeting</code> function to accept two parameters that are both of type <code>string</code>.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">greeting</span><span class="p">(</span><span class="nx">greeting</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">greeting</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">greeting</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"Bob"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  Hello Bob</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>However, Go provides some helpful ‘syntactic sugar’ when passing in multiple parameters of the same type, which allows us to do this instead:</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">greeting</span><span class="p">(</span><span class="nx">greeting</span><span class="p">,</span> <span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">greeting</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">greeting</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"Bob"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  Hello Bob</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid67" class="section"><h2><a href="go-basics-11-functions-in-go_fragment.xhtml#cid67" class="heading hyperref"><span class="number">11.2 </span>Variadic functions</a></h2>
+<p>A variadic function is a function that can accept any arbitrary number of arguments.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">nums</span> <span class="o">...</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">nums</span><span class="p">,</span> <span class="s">"\n"</span><span class="p">)</span>
+	<span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">num</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">nums</span> <span class="p">{</span>
+		<span class="nx">total</span> <span class="o">+=</span> <span class="nx">num</span>
+	<span class="p">}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"Total: "</span><span class="p">,</span> <span class="nx">total</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+	<span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  [1 2]</span>
+<span class="cm">  Total:  3</span>
+<span class="cm">  [1 2 3]</span>
+<span class="cm">  Total:  6</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Under the hood, the Go compiler converts the ‘variadic arguments’ into a slice.<span class="intersentencespace"></span> If you are using ‘variadic parameters’ <strong>you can only have one, and it has to be the last parameter</strong>.</p>
+<p>We can modify our example above to accept additional parameters as well as the ‘variadic parameters.’</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">nums</span> <span class="o">...</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">nums</span><span class="p">,</span> <span class="s">"\n"</span><span class="p">)</span>
+	<span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">num</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">nums</span> <span class="p">{</span>
+		<span class="nx">total</span> <span class="o">+=</span> <span class="nx">num</span>
+	<span class="p">}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">msg</span><span class="p">,</span> <span class="nx">total</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">sum</span><span class="p">(</span><span class="s">"Total: "</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+	<span class="nx">sum</span><span class="p">(</span><span class="s">"Total: "</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  [1 2]</span>
+<span class="cm">  Total:  3</span>
+<span class="cm">  [1 2 3]</span>
+<span class="cm">  Total:  6</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid68" class="section"><h2><a href="go-basics-11-functions-in-go_fragment.xhtml#cid68" class="heading hyperref"><span class="number">11.3 </span>Return values</a></h2>
+<p>Functions in Go can also <code>return</code> data from a function.<span class="intersentencespace"></span> Since Go is a typed language, we also need to specify the type we expect the function to <code>return</code>.<span class="intersentencespace"></span> We specify the <code>return</code> type between the <code>()</code> and the <code>{}</code>.<span class="intersentencespace"></span> In this example we are expecting the <code>sum</code> function to <code>return</code> a type of <code>int</code>.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">nums</span> <span class="o">...</span><span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">nums</span><span class="p">,</span> <span class="s">"\n"</span><span class="p">)</span>
+	<span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">num</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">nums</span> <span class="p">{</span>
+		<span class="nx">total</span> <span class="o">+=</span> <span class="nx">num</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">total</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">s</span> <span class="o">:=</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"Total: "</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  [1 2 4 5]</span>
+<span class="cm">  Total:  12</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid69" class="section"><h2><a href="go-basics-11-functions-in-go_fragment.xhtml#cid69" class="heading hyperref"><span class="number">11.4 </span>Returning pointers</a></h2>
+<p>Go is unique in that it allows you to return a pointer to a value, like so:</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">nums</span> <span class="o">...</span><span class="kt">int</span><span class="p">)</span> <span class="o">*</span><span class="kt">int</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">nums</span><span class="p">,</span> <span class="s">"\n"</span><span class="p">)</span>
+	<span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">num</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">nums</span> <span class="p">{</span>
+		<span class="nx">total</span> <span class="o">+=</span> <span class="nx">num</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">total</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">s</span> <span class="o">:=</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"Total: "</span><span class="p">,</span> <span class="o">*</span><span class="nx">s</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  [1 2 4 5]</span>
+<span class="cm">  Total:  12</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>The result is the same as the previous example; however, in the previous example, we were returning a copy of <code>total</code>.<span class="intersentencespace"></span> In this example, we are returning a <code>pointer</code> to <code>total</code> and therefore are modifying the original value.</p>
+</div><div id="cid70" class="section"><h2><a href="go-basics-11-functions-in-go_fragment.xhtml#cid70" class="heading hyperref"><span class="number">11.5 </span>Multiple return values</a></h2>
+<p>Functions in Go can also return more than one value at a time.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">divide</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="nx">b</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"Cannot divide by zero"</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="k">return</span> <span class="nx">a</span> <span class="o">/</span> <span class="nx">b</span><span class="p">,</span> <span class="kc">nil</span> <span class="c1">// return nil since there is no error at this point</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">d</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">divide</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+		<span class="k">return</span>
+	<span class="p">}</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  Cannot divide by zero</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Multiple return values are used often in Go, especially functions that return not only a value, but also an error if something went wrong.</p>
+</div><div id="cid71" class="section"><h2><a href="go-basics-11-functions-in-go_fragment.xhtml#cid71" class="heading hyperref"><span class="number">11.6 </span>Methods</a></h2>
+<p>Functions that are attached to <code>types</code> are called <code>methods</code>.<span class="intersentencespace"></span> Typically, you will most often see <code>methods</code> that are attached to <code>structs</code>.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">greeter</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">greeting</span> <span class="kt">string</span>
+	<span class="nx">name</span>     <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">g</span> <span class="nx">greeter</span><span class="p">)</span> <span class="nx">greet</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nx">greeting</span><span class="p">,</span> <span class="nx">g</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">g</span> <span class="o">:=</span> <span class="nx">greeter</span><span class="p">{</span>
+		<span class="nx">greeting</span><span class="p">:</span> <span class="s">"Hello"</span><span class="p">,</span>
+		<span class="nx">name</span><span class="p">:</span>     <span class="s">"John"</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="nx">g</span><span class="p">.</span><span class="nx">greet</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  Hello John</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Let’s break down the method syntax:</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kd">func</span> <span class="p">(</span><span class="nx">g</span> <span class="nx">greeter</span><span class="p">)</span> <span class="nx">greet</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nx">greeting</span><span class="p">,</span> <span class="nx">g</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div></div>
+<ol>
+<li> Like any other function, we begin with the <code>func</code> keyword
+</li>
+<li> <code>(g greeter)</code> tells Go which type this method is attached to.<span class="intersentencespace"></span> This method will received the greeter <code>struct</code> and will
+set it to the variable <code>g</code>.<span class="intersentencespace"></span>
+</li>
+<li> <code>greet()</code> - the name of the function.<span class="intersentencespace"></span>
+</li>
+<li> <code>fmt.Println(g.greeting, g.name)</code> - since we are passing in the <code>greeter</code> struct, we have access to its properties,
+like <code>greeting</code> and <code>name</code>.<span class="intersentencespace"></span>
+</li></ol>
+</div><div id="cid72" class="section"><h2><a href="go-basics-11-functions-in-go_fragment.xhtml#cid72" class="heading hyperref"><span class="number">11.7 </span>Wrap Up</a></h2>
+<p>In this chapter, we learned how to create and work with functions in Go.</p>
+</div><div id="cid73" class="section"><h2><a href="go-basics-11-functions-in-go_fragment.xhtml#cid73" class="heading hyperref"><span class="number">11.8 </span>Additional Resources</a></h2>
+<ul>
+<li> <a href="https://gobyexample.com/" rel="noopener">Go by Example</a>
+</li>
+<li> <a href="https://www.youtube.com/watch?v=YS4e4q9oBaU" rel="noopener">Free Code Camp - Learn Go Programming for Beginners</a>
+</li></ul>
+</div>
+        </body>
+        </html>

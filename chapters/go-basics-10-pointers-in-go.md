@@ -168,7 +168,7 @@ func main() {
 
 ## Wrap Up
 
-In this article, we learned how to create and work with pointers in Go.
+In this chapter, we learned how to create and work with pointers in Go.
 
 ## Additional Resources
 

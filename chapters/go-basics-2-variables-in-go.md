@@ -360,8 +360,8 @@ func main() {
 
 /*
   The result of the code above is:
-  14, int
-, string
+  47, int
+  /, string
 */
 ```
 
@@ -369,7 +369,7 @@ The reason is that since a `string` in Go is a `string` of `bytes` it is looking
 
 ## Wrap Up
 
-In this article, we discussed the following topics when it comes to variables:
+In this chapter, we discussed the following topics when it comes to variables:
 
 - Variable declaration
 - Variable shadowing

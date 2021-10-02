@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+        <!DOCTYPE html>
+
+        <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+          <title>Chapter 3</title>
+          <link rel="stylesheet" href="styles/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="styles/softcover.css" type="text/css" />
+          <link rel="stylesheet" href="styles/epub.css" type="text/css" />
+          <link rel="stylesheet" href="styles/custom.css" type="text/css"/>
+          <link rel="stylesheet" href="styles/custom_epub.css" type="text/css"/>
+          <link rel="stylesheet" type="application/vnd.adobe-page-template+xml" href="styles/page-template.xpgt" />
+        </head>
+
+        <body>
+          <div id="cid17" class="chapter"><h1><a href="go-basics-3-primitives-in-go_fragment.xhtml#cid17" class="heading hyperref"><span class="number">Chapter 3 </span>Primitives</a></h1>
+</div><div id="cid18" class="section"><h2><a href="go-basics-3-primitives-in-go_fragment.xhtml#cid18" class="heading hyperref"><span class="number">3.1 </span>Bool type</a></h2>
+<p>Booleans are in just about every single programming language, and Go is no exception.<span class="intersentencespace"></span> They represent the value of either <code>true</code> or <code>false</code>.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">b</span> <span class="kt">bool</span> <span class="p">=</span> <span class="kc">true</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T"</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  true, bool</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">b</span> <span class="kt">bool</span> <span class="p">=</span> <span class="kc">false</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T"</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  false, bool</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>An interesting thing to note is that booleans are given a <code>zero</code> value when they are initialized.<span class="intersentencespace"></span> This means that the <code>bool</code> type is given the value of <code>false</code> unless otherwise specified.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">b</span> <span class="kt">bool</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T"</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  false, bool</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid19" class="section"><h2><a href="go-basics-3-primitives-in-go_fragment.xhtml#cid19" class="heading hyperref"><span class="number">3.2 </span>Numeric Types</a></h2>
+<p>Golang has several different numeric types.<span class="intersentencespace"></span> The first one we are going to learn about is the <code>int</code> type.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">i</span> <span class="o">:=</span> <span class="mi">14</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T"</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  14, int</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>There are 4 different <code>signed</code> integer types in the language, each representing a specific range of numbers.</p>
+<table class="tabular"><tr class="top_border bottom_border"><td class="left_border align_left right_border">Int Type</td>
+<td class="align_left right_border">Minimum</td>
+<td class="align_left right_border">Maximum</td>
+</tr><tr><td class="left_border align_left right_border">int8</td>
+<td class="align_left right_border">-128</td>
+<td class="align_left right_border">127</td>
+</tr><tr><td class="left_border align_left right_border">int16</td>
+<td class="align_left right_border">-32,768</td>
+<td class="align_left right_border">32,767</td>
+</tr><tr><td class="left_border align_left right_border">int32</td>
+<td class="align_left right_border">-2,147,483,648</td>
+<td class="align_left right_border">2,147,483,647</td>
+</tr><tr class="bottom_border"><td class="left_border align_left right_border">int64</td>
+<td class="align_left right_border">-9,223,372,036,854,775,808</td>
+<td class="align_left right_border">9,223,372,036,854,775,807</td>
+</tr></table>
+<p>There are 4 different <code>unsigned</code> integer types in the language, each representing a specific range of numbers.</p>
+<table class="tabular"><tr class="top_border bottom_border"><td class="left_border align_left right_border">Int Type</td>
+<td class="align_left right_border">Minimum</td>
+<td class="align_left right_border">Maximum</td>
+</tr><tr><td class="left_border align_left right_border">uint8</td>
+<td class="align_left right_border">0</td>
+<td class="align_left right_border">255</td>
+</tr><tr><td class="left_border align_left right_border">uint16</td>
+<td class="align_left right_border">0</td>
+<td class="align_left right_border">65,535</td>
+</tr><tr><td class="left_border align_left right_border">uint32</td>
+<td class="align_left right_border">0</td>
+<td class="align_left right_border">4,294,967,295</td>
+</tr><tr class="bottom_border"><td class="left_border align_left right_border">uint64</td>
+<td class="align_left right_border">0</td>
+<td class="align_left right_border">18,446,744,073,709,551,615</td>
+</tr></table>
+<ul>
+<li> source: <a href="https://ispycode.com/GO/Types/Integer-Min-Max-Ranges" rel="noopener">I Spy Code - Go</a>
+</li></ul>
+<p>Let’s now look at some basic mathematical operations we can perform upon these numbers.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">a</span> <span class="o">:=</span> <span class="mi">10</span>
+  <span class="nx">b</span> <span class="o">:=</span> <span class="mi">2</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">// addition</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">// subtraction</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">// multiplication</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span> <span class="o">/</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">// division</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span> <span class="o">%</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">// remainder (sometimes called modulus in other languages)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  12</span>
+<span class="cm">  8</span>
+<span class="cm">  20</span>
+<span class="cm">  5</span>
+<span class="cm">  0</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid20" class="section"><h2><a href="go-basics-3-primitives-in-go_fragment.xhtml#cid20" class="heading hyperref"><span class="number">3.3 </span>Floating point numbers or decimals</a></h2>
+<table class="tabular"><tr class="top_border bottom_border"><td class="left_border align_left right_border">Float Type</td>
+<td class="align_left right_border">Minimum</td>
+<td class="align_left right_border">Maximum</td>
+</tr><tr><td class="left_border align_left right_border">float32</td>
+<td class="align_left right_border">1.401298464324817070923729583289916131280e-45</td>
+<td class="align_left right_border">3.40282346638528859811704183484516925440e+38</td>
+</tr><tr class="bottom_border"><td class="left_border align_left right_border">float64</td>
+<td class="align_left right_border">4.940656458412465441765687928682213723651e-324</td>
+<td class="align_left right_border">1.797693134862315708145274237317043567981e+308</td>
+</tr></table>
+<ul>
+<li> source <a href="https://golang.org/pkg/math/#pkg-constants" rel="noopener">Golang.org Math package</a>
+</li></ul>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">i</span> <span class="o">:=</span> <span class="mf">3.14</span> <span class="c1">// defaults to a float64 type</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T"</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  3.14, float64</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Basic mathematical operations with floats:</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">a</span> <span class="o">:=</span> <span class="mf">3.14</span>
+  <span class="nx">b</span> <span class="o">:=</span> <span class="mf">2.5</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">// addition</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">// subtraction</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">// multiplication</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span> <span class="o">/</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">// division</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  5.640000000000001</span>
+<span class="cm">  0.6400000000000001</span>
+<span class="cm">  7.8500000000000005</span>
+<span class="cm">  1.256</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p><em><strong>The remainder operator <code>%</code> is only available on integer types, **not</strong></em><em> floats.**</em></p>
+</div><div id="cid21" class="section"><h2><a href="go-basics-3-primitives-in-go_fragment.xhtml#cid21" class="heading hyperref"><span class="number">3.4 </span>String Type</a></h2>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">s</span> <span class="o">:=</span> <span class="s">"Hello, World!"</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T"</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  Hello, World!, string</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Strings in Go are collections of bytes.<span class="intersentencespace"></span> You can access individual characters in a string just like you would access items in an array.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">s</span> <span class="o">:=</span> <span class="s">"Hello, World!"</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T"</span><span class="p">,</span> <span class="nx">s</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="nx">s</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  108, uint8</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Strings are concatenated with the <code>+</code> operator.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">s</span> <span class="o">:=</span> <span class="s">"Hello"</span>
+  <span class="nx">w</span> <span class="o">:=</span> <span class="s">", World!"</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span> <span class="o">+</span> <span class="nx">w</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  Hello, World!</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>You can also convert a string to a collection of bytes, known as a <code>slice</code> in Go.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">s</span> <span class="o">:=</span> <span class="s">"Hello, World!"</span>
+  <span class="nx">b</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T"</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  [72 101 108 108 111 44 32 87 111 114 108 100 33], []uint8</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid22" class="section"><h2><a href="go-basics-3-primitives-in-go_fragment.xhtml#cid22" class="heading hyperref"><span class="number">3.5 </span>Rune Type</a></h2>
+<p>The difference between a <code>string</code> and a <code>rune</code> is that a <code>string</code> represents any UTF-8 character and a <code>rune</code> represents any UTF-32 character or an <code>int32</code> type.</p>
+<p>A <code>string</code> is declared with <code>""</code> double quotes while a <code>rune</code> is declared with <code>”</code> single quotes</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">r</span> <span class="o">:=</span> <span class="sc">'t'</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v, %T"</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  116, int32</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid23" class="section"><h2><a href="go-basics-3-primitives-in-go_fragment.xhtml#cid23" class="heading hyperref"><span class="number">3.6 </span>Wrap Up</a></h2>
+<p>In this chapter, we learned about the following primitives in Go.</p>
+<ul>
+<li> Boolean Type
+</li>
+<li> Integers (signed &amp; unsigned)
+</li>
+<li> Arithmetic Operations
+</li>
+<li> Floating point numbers (32bit &amp; 64bit)
+</li>
+<li> Strings
+</li>
+<li> Runes
+</li></ul>
+</div><div id="cid24" class="section"><h2><a href="go-basics-3-primitives-in-go_fragment.xhtml#cid24" class="heading hyperref"><span class="number">3.7 </span>Additional Resources</a></h2>
+<ul>
+<li> <a href="https://golang.org/pkg" rel="noopener">Golang.org Packages</a>
+</li>
+<li> <a href="https://www.youtube.com/watch?v=YS4e4q9oBaU" rel="noopener">Free Code Camp - Learn Go Programming for Beginners</a>
+</li></ul>
+</div>
+        </body>
+        </html>

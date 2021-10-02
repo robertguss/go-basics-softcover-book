@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+        <!DOCTYPE html>
+
+        <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+          <title>Chapter 8</title>
+          <link rel="stylesheet" href="styles/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="styles/softcover.css" type="text/css" />
+          <link rel="stylesheet" href="styles/epub.css" type="text/css" />
+          <link rel="stylesheet" href="styles/custom.css" type="text/css"/>
+          <link rel="stylesheet" href="styles/custom_epub.css" type="text/css"/>
+          <link rel="stylesheet" type="application/vnd.adobe-page-template+xml" href="styles/page-template.xpgt" />
+        </head>
+
+        <body>
+          <div id="cid47" class="chapter"><h1><a href="go-basics-8-control-flow-in-go_fragment.xhtml#cid47" class="heading hyperref"><span class="number">Chapter 8 </span>Control Flow</a></h1>
+</div><div id="cid48" class="section"><h2><a href="go-basics-8-control-flow-in-go_fragment.xhtml#cid48" class="heading hyperref"><span class="number">8.1 </span>If statements</a></h2>
+<p>In Go, if statements behave just like they do in most programming languages.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="k">if</span> <span class="kc">true</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">robert</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is: Hi</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>or</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="k">if</span> <span class="kc">false</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">robert</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  nothing happens when this is program runs since the fmt.Println() is never   executed</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid49" class="section"><h2><a href="go-basics-8-control-flow-in-go_fragment.xhtml#cid49" class="heading hyperref"><span class="number">8.2 </span>Comparison operators</a></h2>
+<p>Go has the following comparison operators.</p>
+<table class="tabular"><tr class="top_border bottom_border"><td class="left_border align_left right_border">Operator</td>
+<td class="align_left right_border">Definition</td>
+</tr><tr><td class="left_border align_left right_border">==</td>
+<td class="align_left right_border">equal</td>
+</tr><tr><td class="left_border align_left right_border">!=</td>
+<td class="align_left right_border">not equal</td>
+</tr><tr><td class="left_border align_left right_border">&lt;</td>
+<td class="align_left right_border">less than</td>
+</tr><tr><td class="left_border align_left right_border">&lt;=</td>
+<td class="align_left right_border">less than or equal</td>
+</tr><tr><td class="left_border align_left right_border">&gt;</td>
+<td class="align_left right_border">greater than</td>
+</tr><tr class="bottom_border"><td class="left_border align_left right_border">&gt;=</td>
+<td class="align_left right_border">greater than or equal</td>
+</tr></table>
+<p>More info: <a href="https://golang.org/ref/spec#Comparison_operators" rel="noopener">Golang.org Comparison Operators</a></p>
+</div><div id="cid50" class="section"><h2><a href="go-basics-8-control-flow-in-go_fragment.xhtml#cid50" class="heading hyperref"><span class="number">8.3 </span>Logical operators</a></h2>
+<p>Go has the following logical operators.</p>
+<p><strong>&amp;&amp;</strong> - is known as the <strong>AND</strong> operator:</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="nx">p</span> <span class="o">&amp;&amp;</span> <span class="nx">q</span>
+
+<span class="c1">// "if p AND q are both True"</span>
+</pre></div></div>
+<table class="tabular"><tr class="top_border bottom_border"><td class="left_border align_left right_border">**</td>
+<td class="align_left right_border"></td>
+<td class="align_left right_border">** - is known as the <strong>OR</strong> operator:</td>
+</tr></table>
+<div class="code"><div class="highlight"><pre><span></span><span class="nx">p</span> <span class="o">||</span> <span class="nx">q</span>
+
+<span class="c1">// "if either p OR q is true"</span>
+</pre></div></div>
+<p><strong>!</strong><span class="intersentencespace"></span> - is known as the <strong>NOT</strong> operator:</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="p">!</span><span class="nx">p</span>
+
+<span class="c1">// "if NOT p"</span>
+</pre></div></div>
+<p>More info: <a href="https://golang.org/ref/spec#Logical_operators" rel="noopener">Golang.org Logical Operators</a></p>
+</div><div id="cid51" class="section"><h2><a href="go-basics-8-control-flow-in-go_fragment.xhtml#cid51" class="heading hyperref"><span class="number">8.4 </span>Switch statements</a></h2>
+<p>Switch statements in Go behave like most other programming languages.<span class="intersentencespace"></span> If the <code>case</code> matches, then the code within it is executed.<span class="intersentencespace"></span> If nothing matches, then the <code>default</code> code is executed.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="k">switch</span> <span class="mi">4</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"one"</span><span class="p">)</span>
+	<span class="k">case</span> <span class="mi">4</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"four"</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"default"</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is: four</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="k">switch</span> <span class="mi">7</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"one"</span><span class="p">)</span>
+	<span class="k">case</span> <span class="mi">4</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"four"</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"default"</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is: default</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Go also allows you to check for multiple cases at the same time.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="k">switch</span> <span class="mi">2</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"one two or three"</span><span class="p">)</span>
+	<span class="k">case</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"four five or six"</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"default"</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is: one two or three</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Cases in Go must be unique, meaning you cannot test for the same value more than once.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="k">switch</span> <span class="mi">2</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"one"</span><span class="p">)</span>
+	<span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"one"</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"default"</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is: duplicate case 1 in switch</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>You can also use what is known as <code>tagless</code> switch statements, meaning there is no value after the <code>switch</code> keyword.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="nx">i</span> <span class="o">:=</span> <span class="mi">14</span>
+
+	<span class="k">switch</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"less than 10"</span><span class="p">)</span>
+	<span class="k">case</span> <span class="nx">i</span> <span class="p">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"greater than 10"</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"default"</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is: greater than 10</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Go allows you to ‘fallthrough’ the various cases by using the <code>fallthrough</code> keyword.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="nx">i</span> <span class="o">:=</span> <span class="mi">4</span>
+
+	<span class="k">switch</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"less than 10"</span><span class="p">)</span>
+		<span class="k">fallthrough</span>
+	<span class="k">case</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"less than 20"</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"default"</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  less than 10</span>
+<span class="cm">  less than 20</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>It is important to remember that when using the <code>fallthrough</code> keyword, the following case after it is always executed, even if the case doesn’t match, so be careful when using it.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="nx">i</span> <span class="o">:=</span> <span class="mi">4</span>
+
+	<span class="k">switch</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"less than 10"</span><span class="p">)</span>
+		<span class="k">fallthrough</span>
+	<span class="k">case</span> <span class="nx">i</span> <span class="p">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"greater than 20"</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"default"</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  less than 10</span>
+<span class="cm">  greater than 20</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Switch statements can also check the <code>type</code> of an <code>interface</code>.<span class="intersentencespace"></span> This is known as a ‘type switch.’<span class="intersentencespace"></span> <strong>This only works when checking interfaces.</strong></p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="kd">var</span> <span class="nx">i</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">=</span> <span class="mi">4</span>
+
+	<span class="k">switch</span> <span class="nx">i</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"int"</span><span class="p">)</span>
+	<span class="k">case</span> <span class="kt">float32</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"float32"</span><span class="p">)</span>
+	<span class="k">case</span> <span class="kt">string</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"string"</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"default"</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is: int</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">4</span>
+
+	<span class="k">switch</span> <span class="nx">i</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"int"</span><span class="p">)</span>
+	<span class="k">case</span> <span class="kt">float32</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"float32"</span><span class="p">)</span>
+	<span class="k">case</span> <span class="kt">string</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"string"</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"default"</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  cannot type switch on non-interface value i (type int)</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid52" class="section"><h2><a href="go-basics-8-control-flow-in-go_fragment.xhtml#cid52" class="heading hyperref"><span class="number">8.5 </span>Wrap Up</a></h2>
+<p>In this chapter, we learned how to create and work if statements, comparison operators, logical operators, and switch statements in Go.</p>
+</div><div id="cid53" class="section"><h2><a href="go-basics-8-control-flow-in-go_fragment.xhtml#cid53" class="heading hyperref"><span class="number">8.6 </span>Additional Resources</a></h2>
+<ul>
+<li> <a href="https://gobyexample.com/" rel="noopener">Go by Example</a>
+</li>
+<li> <a href="https://www.youtube.com/watch?v=YS4e4q9oBaU" rel="noopener">Free Code Camp - Learn Go Programming for Beginners</a>
+</li></ul>
+</div>
+        </body>
+        </html>

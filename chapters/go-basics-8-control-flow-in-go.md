@@ -344,7 +344,7 @@ func main() {
 
 ## Wrap Up
 
-In this article, we learned how to create and work if statements, comparison operators, logical operators, and switch statements in Go.
+In this chapter, we learned how to create and work if statements, comparison operators, logical operators, and switch statements in Go.
 
 ## Additional Resources
 

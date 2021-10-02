@@ -252,7 +252,7 @@ func main() {
 
 ## Wrap Up
 
-In this article, we learned about the following about constants in Go.
+In this chapter, we learned about the following about constants in Go.
 
 - Naming convention
 - Typed constants
