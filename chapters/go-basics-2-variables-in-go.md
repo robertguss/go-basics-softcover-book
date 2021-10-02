@@ -1,14 +1,6 @@
----
-title: "Go Basics - 2. Variables in Go"
-date: "2020-02-02"
-slug: "go-basics-2-variables-in-go"
-description: "In this article, I am going to be covering how variables work in the Go (Golang) programming language."
-hero: "/images/hero/Golang-Basics.png"
-tags: ["go-basics"]
-layout: "../../layouts/BlogPostLayout.astro"
----
+# Variables
 
-In this article, I am going to be covering how variables work in Golang. Here are some of the topics that are discussed.
+In this chapter, I am going to be covering how variables work in Golang. Here are some of the topics that are discussed.
 
 - Variable declaration
 - Variable shadowing

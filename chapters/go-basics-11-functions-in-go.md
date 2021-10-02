@@ -1,14 +1,6 @@
----
-title: "Go Basics - 11. Functions in Go"
-date: "2020-02-11"
-slug: "go-basics-11-functions-in-go"
-description: "In this article, we are going to explore how functions work in the Go (Golang) programming language."
-hero: "/images/hero/Golang-Basics.png"
-tags: ["go-basics"]
-layout: "../../layouts/BlogPostLayout.astro"
----
+# Functions
 
-In this article, we are going to explore how functions work in the Go programming language.
+In this chapter, we are going to explore how functions work in the Go programming language.
 
 ```go
 package main

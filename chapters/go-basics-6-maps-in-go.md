@@ -1,14 +1,6 @@
----
-title: "Go Basics - 6. Maps in Go"
-date: "2020-02-06"
-slug: "go-basics-6-maps-in-go"
-description: "In this article, we are going to explore how to work with maps in the Go (Golang) programming language."
-hero: "/images/hero/Golang-Basics.png"
-tags: ["go-basics"]
-layout: "../../layouts/BlogPostLayout.astro"
----
+# Maps
 
-In this article, we are going to explore how to work with maps in the Go programming language.
+In this chapter, we are going to explore how to work with maps in the Go programming language.
 
 ## Maps
 

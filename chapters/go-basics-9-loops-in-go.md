@@ -1,14 +1,6 @@
----
-title: "Go Basics - 9. Loops in Go"
-date: "2020-02-09"
-slug: "go-basics-9-loops-in-go"
-description: "In this article, we are going to explore how loops work in the Go (Golang) programming language."
-hero: "/images/hero/Golang-Basics.png"
-tags: ["go-basics"]
-layout: "../../layouts/BlogPostLayout.astro"
----
+# Loops
 
-In this article, we are going to explore how loops work in the Go programming language.
+In this chapter, we are going to explore how loops work in the Go programming language.
 
 ## For loop
 

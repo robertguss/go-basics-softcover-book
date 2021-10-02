@@ -1,14 +1,6 @@
----
-title: "Go Basics - 7. Structs in Go"
-date: "2020-02-07"
-slug: "go-basics-7-structs-in-go"
-description: "In this article, we are going to explore how to work with structs in the Go (Golang) programming language."
-hero: "/images/hero/Golang-Basics.png"
-tags: ["go-basics"]
-layout: "../../layouts/BlogPostLayout.astro"
----
+# Structs
 
-In this article, we are going to explore how to work with structs in the Go programming language.
+In this chapter, we are going to explore how to work with structs in the Go programming language.
 
 ## Structs
 
