@@ -1,10 +1,9 @@
 ---
-slug: go_basics_softcover_book
-filename: go_basics_softcover_book
-title: Title of the Book
-subtitle: Change me
-description: Change me.
-author: Author Name
+slug: go_basics
+filename: go_basics
+title: Go Basics
+subtitle: Learn the basics of the Go programming language.
+author: Robert Guss
 copyright: 2021
 uuid: 4ade11b7-7975-4588-9e90-df90d1bfc7f4
 pdf_preview_page_range: 1..30
