@@ -1,14 +1,6 @@
----
-title: "Go Basics - 8. Control flow in Go"
-date: "2020-02-08"
-slug: "go-basics-8-control-flow-in-go"
-description: "In this article, we are going to explore how if and switch statements work in the Go (Golang) programming language."
-hero: "/images/hero/Golang-Basics.png"
-tags: ["go-basics"]
-layout: "../../layouts/BlogPostLayout.astro"
----
+# Control Flow
 
-In this article, we are going to explore how control flow, a.k.a. if and switch statements, work in the Go programming language.
+In this chapter, we are going to explore how control flow, a.k.a. if and switch statements, work in the Go programming language.
 
 ## If statements
 
