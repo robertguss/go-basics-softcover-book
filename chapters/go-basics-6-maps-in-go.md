@@ -1,9 +1,5 @@
 # Maps
 
-In this chapter, we are going to explore how to work with maps in the Go programming language.
-
-## Maps
-
 Maps in go are `key` `value` data types.
 
 ```go

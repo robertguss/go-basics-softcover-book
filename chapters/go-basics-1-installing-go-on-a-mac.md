@@ -1,9 +1,5 @@
 # Installing Go on a Mac
 
-In this chapter, I am going to show you how to install & setup Go for Mac and also how to setup VS Code for writing Go code.
-
-## Install
-
 The easiest way to install go is via go's website [Golang.org](https://golang.org/dl). After going to this page, click on the link for 'Apple macOS' and run the installer.
 
 If you have [Homebrew](https://brew.sh/) installed you can run the command `brew install golang`

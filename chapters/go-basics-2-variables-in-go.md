@@ -1,12 +1,5 @@
 # Variables
 
-In this chapter, I am going to be covering how variables work in Golang. Here are some of the topics that are discussed.
-
-- Variable declaration
-- Variable shadowing
-- Variable Scope
-- Variable Type conversion
-
 ## Variable declaration
 
 There are 3 different ways you can declare variables in Go.

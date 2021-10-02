@@ -1,9 +1,5 @@
 # Structs
 
-In this chapter, we are going to explore how to work with structs in the Go programming language.
-
-## Structs
-
 `Structs` are a data type in Go that allow you to create custom 'objects' to represent your data however you like. Since they are a [typed collection of fields](https://gobyexample.com/structs), they are incredibly flexible, because a `struct` can contain multiple different `types`. Whereas, a `slice` `array` or `map` must contain the same `type`.
 
 You can think of `structs` as 'structured data.'

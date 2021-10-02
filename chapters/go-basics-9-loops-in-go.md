@@ -1,7 +1,5 @@
 # Loops
 
-In this chapter, we are going to explore how loops work in the Go programming language.
-
 ## For loop
 
 Looping in Go is rather straightforward as there is only one kind of loop in Go, the `for` loop.

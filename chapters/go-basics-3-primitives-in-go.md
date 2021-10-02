@@ -1,7 +1,5 @@
 # Primitives
 
-In this chapter, we are going to explore some of the primitives of the Go programming language.
-
 ## Bool type
 
 Booleans are in just about every single programming language, and Go is no exception. They represent the value of either `true` or `false`.

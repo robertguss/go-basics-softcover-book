@@ -1,7 +1,5 @@
 # Functions
 
-In this chapter, we are going to explore how functions work in the Go programming language.
-
 ```go
 package main
 

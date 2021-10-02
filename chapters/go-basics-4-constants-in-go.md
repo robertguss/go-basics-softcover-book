@@ -1,13 +1,5 @@
 # Constants
 
-In this chapter, we are going to explore how to work with constants in the Go programming language. We will discuss the
-following topics:
-
-- Naming convention
-- Typed constants
-- Untyped constants
-- Enumerated constants
-
 ## Naming convention
 
 In many languages, `constants` are typically named with Capital letters. However, remember that in Go, anything that begins with a Capital letter will be exported. So unless you want to export a constant, you should follow the same naming conventions with constants as you do with variables.

@@ -1,7 +1,5 @@
 # Control Flow
 
-In this chapter, we are going to explore how control flow, a.k.a. if and switch statements, work in the Go programming language.
-
 ## If statements
 
 In Go, if statements behave just like they do in most programming languages.

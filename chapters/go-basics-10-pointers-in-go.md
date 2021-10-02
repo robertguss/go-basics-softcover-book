@@ -1,7 +1,5 @@
 # Pointers
 
-In this chapter, we are going to explore how pointers work in the Go programming language.
-
 ```go
 package main
 

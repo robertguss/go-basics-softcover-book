@@ -1,7 +1,5 @@
 # Arrays and Slices
 
-In this chapter, we are going to explore how to work with arrays & slices in the Go programming language.
-
 ## Arrays
 
 Arrays, unlike slices, are fixed in length. Meaning, that when you create them, you need to specify how many elements are within the array. Arrays can only contain one type, meaning you **cannot** have an array with both `string` and `int` types.
