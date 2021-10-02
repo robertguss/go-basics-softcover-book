@@ -1,1 +1,16 @@
-test.md
+cover
+frontmatter:
+maketitle
+tableofcontents
+mainmatter:
+go-basics-1-installing-go-on-a-mac.md
+go-basics-2-variables-in-go.md
+go-basics-3-primitives-in-go.md
+go-basics-4-constants-in-go.md
+go-basics-5-arrays-and-slices-in-go.md
+go-basics-6-maps-in-go.md
+go-basics-7-structs-in-go.md
+go-basics-8-control-flow-in-go.md
+go-basics-9-loops-in-go.md
+go-basics-10-pointers-in-go.md
+go-basics-11-functions-in-go.md

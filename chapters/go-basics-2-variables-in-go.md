@@ -360,8 +360,8 @@ func main() {
 
 /*
   The result of the code above is:
-  14, int
-, string
+  47, int
+  /, string
 */
 ```
 
