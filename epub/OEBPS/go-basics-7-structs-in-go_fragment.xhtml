@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+        <!DOCTYPE html>
+
+        <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+          <title>Chapter 7</title>
+          <link rel="stylesheet" href="styles/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="styles/softcover.css" type="text/css" />
+          <link rel="stylesheet" href="styles/epub.css" type="text/css" />
+          <link rel="stylesheet" href="styles/custom.css" type="text/css"/>
+          <link rel="stylesheet" href="styles/custom_epub.css" type="text/css"/>
+          <link rel="stylesheet" type="application/vnd.adobe-page-template+xml" href="styles/page-template.xpgt" />
+        </head>
+
+        <body>
+          <div id="cid39" class="chapter"><h1><a href="go-basics-7-structs-in-go_fragment.xhtml#cid39" class="heading hyperref"><span class="number">Chapter 7 </span>Structs</a></h1>
+<p><code>Structs</code> are a data type in Go that allow you to create custom ‘objects’ to represent your data however you like.<span class="intersentencespace"></span> Since they are a <a href="https://gobyexample.com/structs" rel="noopener">typed collection of fields</a>, they are incredibly flexible, because a <code>struct</code> can contain multiple different <code>types</code>.<span class="intersentencespace"></span> Whereas, a <code>slice</code> <code>array</code> or <code>map</code> must contain the same <code>type</code>.</p>
+<p>You can think of <code>structs</code> as ‘structured data.’</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">Person</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">name</span>          <span class="kt">string</span>
+	<span class="nx">age</span>           <span class="kt">int</span>
+	<span class="nx">occupation</span>    <span class="kt">string</span>
+	<span class="nx">favoriteFoods</span> <span class="p">[]</span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">robert</span> <span class="o">:=</span> <span class="nx">Person</span><span class="p">{</span>
+		<span class="nx">name</span><span class="p">:</span>       <span class="s">"Robert Guss"</span><span class="p">,</span>
+		<span class="nx">age</span><span class="p">:</span>        <span class="mi">34</span><span class="p">,</span>
+		<span class="nx">occupation</span><span class="p">:</span> <span class="s">"Developer"</span><span class="p">,</span>
+		<span class="nx">favoriteFoods</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+			<span class="s">"Sushi"</span><span class="p">,</span>
+			<span class="s">"Steak"</span><span class="p">,</span>
+			<span class="s">"Pasta"</span><span class="p">,</span>
+		<span class="p">},</span>
+	<span class="p">}</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">robert</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  {Robert Guss 34 Developer [Sushi Steak Pasta]}</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>To access or get data out of our <code>struct</code> we use the <code>.</code><span class="intersentencespace"></span> syntax.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">Person</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">name</span>          <span class="kt">string</span>
+	<span class="nx">age</span>           <span class="kt">int</span>
+	<span class="nx">occupation</span>    <span class="kt">string</span>
+	<span class="nx">favoriteFoods</span> <span class="p">[]</span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">robert</span> <span class="o">:=</span> <span class="nx">Person</span><span class="p">{</span>
+		<span class="nx">name</span><span class="p">:</span>       <span class="s">"Robert Guss"</span><span class="p">,</span>
+		<span class="nx">age</span><span class="p">:</span>        <span class="mi">34</span><span class="p">,</span>
+		<span class="nx">occupation</span><span class="p">:</span> <span class="s">"Developer"</span><span class="p">,</span>
+		<span class="nx">favoriteFoods</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+			<span class="s">"Sushi"</span><span class="p">,</span>
+			<span class="s">"Steak"</span><span class="p">,</span>
+			<span class="s">"Pasta"</span><span class="p">,</span>
+		<span class="p">},</span>
+	<span class="p">}</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">robert</span><span class="p">.</span><span class="nx">occupation</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  Developer</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>When creating or instantiating our <code>structs</code> we can also use what is known as the ‘positional syntax,’ which saves us some keystrokes.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">Person</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">name</span>          <span class="kt">string</span>
+	<span class="nx">age</span>           <span class="kt">int</span>
+	<span class="nx">occupation</span>    <span class="kt">string</span>
+	<span class="nx">favoriteFoods</span> <span class="p">[]</span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">robert</span> <span class="o">:=</span> <span class="nx">Person</span><span class="p">{</span>
+		<span class="s">"Robert Guss"</span><span class="p">,</span>
+		<span class="mi">34</span><span class="p">,</span>
+		<span class="s">"Developer"</span><span class="p">,</span>
+		<span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+			<span class="s">"Sushi"</span><span class="p">,</span>
+			<span class="s">"Steak"</span><span class="p">,</span>
+			<span class="s">"Pasta"</span><span class="p">,</span>
+		<span class="p">},</span>
+	<span class="p">}</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">robert</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  {Robert Guss 34 Developer [Sushi Steak Pasta]}</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Even though this syntax is possible, it is recommended <strong>not</strong> to use it, as it is not clear what those values are.<span class="intersentencespace"></span> In this trivial example, it is not a big deal, but within the context of a larger Go program, it can be a maintenance nightmare.<span class="intersentencespace"></span> If, at some point, our original <code>struct</code> changes or a new <code>type</code> is added, the positional syntax causes the compile to throw errors and break our program.</p>
+</div><div id="cid40" class="section"><h2><a href="go-basics-7-structs-in-go_fragment.xhtml#cid40" class="heading hyperref"><span class="number">7.1 </span>Naming Conventions</a></h2>
+<p>Structs follow the same naming convention as variables in Go.<span class="intersentencespace"></span> Uppercase names are exported and lower case names will only be available within the package.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kd">type</span> <span class="nx">Person</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">name</span>          <span class="kt">string</span>
+	<span class="nx">age</span>           <span class="kt">int</span>
+	<span class="nx">occupation</span>    <span class="kt">string</span>
+	<span class="nx">favoriteFoods</span> <span class="p">[]</span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+</pre></div></div>
+<p>So in this example, the Person <code>struct</code> is exported, however, the fields are.<span class="intersentencespace"></span> So another package would see that there is a <code>struct</code> called Person, however, another package would not be able to access the fields of it.<span class="intersentencespace"></span> If you wanted to export the person <code>struct</code> and its fields, you would need to capitalize each field.<span class="intersentencespace"></span> Like so:</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kd">type</span> <span class="nx">Person</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">Name</span>          <span class="kt">string</span>
+	<span class="nx">Age</span>           <span class="kt">int</span>
+	<span class="nx">Occupation</span>    <span class="kt">string</span>
+	<span class="nx">FavoriteFoods</span> <span class="p">[]</span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div></div>
+</div><div id="cid41" class="section"><h2><a href="go-basics-7-structs-in-go_fragment.xhtml#cid41" class="heading hyperref"><span class="number">7.2 </span>Anonymous structs</a></h2>
+<p>Structs can also be declared as anonymous structs, but they are not common.<span class="intersentencespace"></span> You most often see <code>structs</code> with names like in the examples above, i.e, Person.<span class="intersentencespace"></span> Typically, anonymous <code>structs</code> are used when a <code>struct</code> is short
+lived; meaning it is used very quickly and then thrown away.</p>
+<p>Here is what an anonymous <code>struct</code> looks like.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">robert</span> <span class="o">:=</span> <span class="kd">struct</span> <span class="p">{</span>
+		<span class="nx">name</span>       <span class="kt">string</span>
+		<span class="nx">age</span>        <span class="kt">int</span>
+		<span class="nx">occupation</span> <span class="kt">string</span>
+	<span class="p">}{</span><span class="nx">name</span><span class="p">:</span> <span class="s">"Robert"</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span> <span class="nx">occupation</span><span class="p">:</span> <span class="s">"Developer"</span><span class="p">}</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">robert</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  {Robert 34 Developer}</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p><em><strong>Notice how the types are separated with a semi-colon <code>;</code> instead of a comma <code>,</code> when declaring an anonymous struct.</strong></em><em></em></p>
+</div><div id="cid42" class="section"><h2><a href="go-basics-7-structs-in-go_fragment.xhtml#cid42" class="heading hyperref"><span class="number">7.3 </span>Structs are passed by value</a></h2>
+<p>Structs are passed by <code>value</code>.<span class="intersentencespace"></span> Therefore, if you create a copy of one, and modify that copy, you won’t alter the original; unlike <a href="/go-basics-6-maps-in-go" rel="noopener">maps</a> or <a href="go-basics-5-arrays-and-slices-in-go" rel="noopener">slices</a> which are passed by <code>reference</code>.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">robert</span> <span class="o">:=</span> <span class="kd">struct</span> <span class="p">{</span>
+		<span class="nx">name</span>       <span class="kt">string</span>
+		<span class="nx">age</span>        <span class="kt">int</span>
+		<span class="nx">occupation</span> <span class="kt">string</span>
+	<span class="p">}{</span><span class="nx">name</span><span class="p">:</span> <span class="s">"Robert"</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span> <span class="nx">occupation</span><span class="p">:</span> <span class="s">"Developer"</span><span class="p">}</span>
+
+	<span class="nx">john</span> <span class="o">:=</span> <span class="nx">robert</span>
+
+	<span class="nx">john</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="s">"John"</span>
+	<span class="nx">john</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="mi">50</span>
+	<span class="nx">john</span><span class="p">.</span><span class="nx">occupation</span> <span class="p">=</span> <span class="s">"Lawyer"</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">robert</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">john</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  {Robert 34 Developer}</span>
+<span class="cm">  {John 50 Lawyer}</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>We can alter the original by using a <code>pointer</code> like so:</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">robert</span> <span class="o">:=</span> <span class="kd">struct</span> <span class="p">{</span>
+		<span class="nx">name</span>       <span class="kt">string</span>
+		<span class="nx">age</span>        <span class="kt">int</span>
+		<span class="nx">occupation</span> <span class="kt">string</span>
+	<span class="p">}{</span><span class="nx">name</span><span class="p">:</span> <span class="s">"Robert"</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span> <span class="nx">occupation</span><span class="p">:</span> <span class="s">"Developer"</span><span class="p">}</span>
+
+	<span class="nx">john</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">robert</span>
+
+	<span class="nx">john</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="s">"John"</span>
+	<span class="nx">john</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="mi">50</span>
+	<span class="nx">john</span><span class="p">.</span><span class="nx">occupation</span> <span class="p">=</span> <span class="s">"Lawyer"</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">robert</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">john</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  {John 50 Lawyer}</span>
+<span class="cm">  &amp;{John 50 Lawyer}</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid43" class="section"><h2><a href="go-basics-7-structs-in-go_fragment.xhtml#cid43" class="heading hyperref"><span class="number">7.4 </span>Struct composition</a></h2>
+<p>Go does not have ‘objects’ like you would typically find in an OOP or Object Oriented Programming language.<span class="intersentencespace"></span> So there is no concept of <code>inheritance</code>.<span class="intersentencespace"></span> Instead, Go uses a method known as <code>composition</code>.<span class="intersentencespace"></span> Composition is where you <code>compose</code> structs together to create new <code>structs</code>.<span class="intersentencespace"></span> Combining <code>structs</code> in Go is also known as <code>embedding</code>.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">Fruit</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">Name</span>           <span class="kt">string</span>
+	<span class="nx">Classification</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Apple</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">Fruit</span>  <span class="c1">// 'embedding' the Fruit struct inside of the Apple struct</span>
+	<span class="nx">color</span>  <span class="kt">string</span>
+	<span class="nx">flavor</span> <span class="kt">string</span>
+	<span class="nx">weight</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">a</span> <span class="o">:=</span> <span class="nx">Apple</span><span class="p">{}</span>
+	<span class="nx">a</span><span class="p">.</span><span class="nx">Name</span> <span class="p">=</span> <span class="s">"Granny Smith"</span>
+	<span class="nx">a</span><span class="p">.</span><span class="nx">color</span> <span class="p">=</span> <span class="s">"Green"</span>
+	<span class="nx">a</span><span class="p">.</span><span class="nx">flavor</span> <span class="p">=</span> <span class="s">"Sour"</span>
+	<span class="nx">a</span><span class="p">.</span><span class="nx">weight</span> <span class="p">=</span> <span class="mi">1</span>
+	<span class="nx">a</span><span class="p">.</span><span class="nx">Classification</span> <span class="p">=</span> <span class="s">"Malus domestica"</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  { {Granny Smith Malus domestica} Green Sour 1}</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>It may look like the Apple <code>struct</code> is inheriting properties from the Fruit <code>struct</code>, however, that is not the case in Go.<span class="intersentencespace"></span> In a typical OOP language, we would say that an Apple <strong>is a</strong> Fruit.<span class="intersentencespace"></span> In Go, we say that the Apple <strong>has a</strong> Fruit.<span class="intersentencespace"></span> The Apple, in this case, is not a type of Fruit, it is still a type of Apple.<span class="intersentencespace"></span> The apple does not have any relationship to the Fruit other than the fact that it <code>embeds</code> it.</p>
+<p>If we want to use the <code>literal</code> syntax when declaring our <code>embedded structs</code> the syntax is slightly different.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">Fruit</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">Name</span>           <span class="kt">string</span>
+	<span class="nx">Classification</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Apple</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">Fruit</span>  <span class="c1">// 'embedding' the Fruit struct inside of the Apple struct</span>
+	<span class="nx">color</span>  <span class="kt">string</span>
+	<span class="nx">flavor</span> <span class="kt">string</span>
+	<span class="nx">weight</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">a</span> <span class="o">:=</span> <span class="nx">Apple</span><span class="p">{</span>
+		<span class="nx">Fruit</span><span class="p">:</span>  <span class="nx">Fruit</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span> <span class="s">"Granny Smith"</span><span class="p">,</span> <span class="nx">Classification</span><span class="p">:</span> <span class="s">"Malus domestica"</span><span class="p">},</span>
+		<span class="nx">color</span><span class="p">:</span>  <span class="s">"green"</span><span class="p">,</span>
+		<span class="nx">flavor</span><span class="p">:</span> <span class="s">"sour"</span><span class="p">,</span>
+		<span class="nx">weight</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  { {Granny Smith Malus domestica} green sour 1}</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid44" class="section"><h2><a href="go-basics-7-structs-in-go_fragment.xhtml#cid44" class="heading hyperref"><span class="number">7.5 </span>Tags</a></h2>
+<p>Tags are a way to add additional data to your fields on a <code>struct</code>.<span class="intersentencespace"></span> Let’s look at an example.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kd">type</span> <span class="nx">Fruit</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">Name</span>           <span class="kt">string</span> <span class="s">`required:"true" max:"100"`</span> <span class="c1">// tag</span>
+	<span class="nx">Classification</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+</pre></div></div>
+<p>Let’s say that for this example, I want to make sure that the name of a Fruit is required, and it cannot exceed a maximum length of 100 characters.<span class="intersentencespace"></span> This is handy if a user is filling out a form in a web application to provide this information.<span class="intersentencespace"></span> The <code>tag</code> contains the validation info for the field.</p>
+<p><code>Tags</code> are basically meta data fields.</p>
+<p>To get access to the <code>tag</code> information, we need to use the <code>reflect</code> package in Go.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+  <span class="s">"fmt"</span>
+  <span class="s">"reflect"</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">Fruit</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">Name</span>           <span class="kt">string</span> <span class="s">`required:"true" max:"100"`</span> <span class="c1">// tag</span>
+	<span class="nx">Classification</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">t</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">TypeOf</span><span class="p">(</span><span class="nx">Fruit</span><span class="p">{})</span>
+  <span class="nx">field</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">t</span><span class="p">.</span><span class="nx">FieldByName</span><span class="p">(</span><span class="s">"Name"</span><span class="p">)</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">field</span><span class="p">.</span><span class="nx">Tag</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  required:"true" max:"100"</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>_**In case you are wondering what the <code>_</code> underscore symbol means a.k.a the Blank Identifier, it essentially tells the Go compiler that we are expecting a value here, but we don’t care about it, so throw it away.**_</p>
+<p>You can read more about it here: <a href="https://www.geeksforgeeks.org/what-is-blank-identifierunderscore-in-golang/" rel="noopener">What is Blank Identifier(underscore) in Golang?</a></p>
+</div><div id="cid45" class="section"><h2><a href="go-basics-7-structs-in-go_fragment.xhtml#cid45" class="heading hyperref"><span class="number">7.6 </span>Wrap Up</a></h2>
+<p>In this article, we learned how to create and work with structs in go.</p>
+</div><div id="cid46" class="section"><h2><a href="go-basics-7-structs-in-go_fragment.xhtml#cid46" class="heading hyperref"><span class="number">7.7 </span>Additional Resources</a></h2>
+<ul>
+<li> <a href="https://golang.org/pkg" rel="noopener">Golang.org Packages</a>
+</li>
+<li> <a href="https://gobyexample.com/" rel="noopener">Go by Example</a>
+</li>
+<li> <a href="https://www.youtube.com/watch?v=YS4e4q9oBaU" rel="noopener">Free Code Camp - Learn Go Programming for Beginners</a>
+</li></ul>
+</div>
+        </body>
+        </html>

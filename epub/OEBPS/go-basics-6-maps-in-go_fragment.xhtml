@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+        <!DOCTYPE html>
+
+        <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+          <title>Chapter 6</title>
+          <link rel="stylesheet" href="styles/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="styles/softcover.css" type="text/css" />
+          <link rel="stylesheet" href="styles/epub.css" type="text/css" />
+          <link rel="stylesheet" href="styles/custom.css" type="text/css"/>
+          <link rel="stylesheet" href="styles/custom_epub.css" type="text/css"/>
+          <link rel="stylesheet" type="application/vnd.adobe-page-template+xml" href="styles/page-template.xpgt" />
+        </head>
+
+        <body>
+          <div id="cid36" class="chapter"><h1><a href="go-basics-6-maps-in-go_fragment.xhtml#cid36" class="heading hyperref"><span class="number">Chapter 6 </span>Maps</a></h1>
+<p>Maps in go are <code>key</code> <code>value</code> data types.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">ages</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+		<span class="s">"John"</span><span class="p">:</span>  <span class="mi">22</span><span class="p">,</span>
+		<span class="s">"Mary"</span><span class="p">:</span>  <span class="mi">45</span><span class="p">,</span>
+		<span class="s">"Joe"</span><span class="p">:</span>   <span class="mi">33</span><span class="p">,</span>
+		<span class="s">"Bob"</span><span class="p">:</span>   <span class="mi">76</span><span class="p">,</span>
+		<span class="s">"Emily"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ages</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  map[Bob:76 Emily:21 Joe:33 John:22 Mary:45]</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>When declaring a map, the <code>key</code> and <code>value</code> data types must be consistent.<span class="intersentencespace"></span> So in the above example, all of the <code>keys</code> must be of type <code>string</code>, and all of the <code>values</code> must be of type <code>int</code>.</p>
+<p>You can create maps with the <code>make()</code> function as well.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">ages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+
+	<span class="nx">ages</span> <span class="p">=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+		<span class="s">"John"</span><span class="p">:</span>  <span class="mi">22</span><span class="p">,</span>
+		<span class="s">"Mary"</span><span class="p">:</span>  <span class="mi">45</span><span class="p">,</span>
+		<span class="s">"Joe"</span><span class="p">:</span>   <span class="mi">33</span><span class="p">,</span>
+		<span class="s">"Bob"</span><span class="p">:</span>   <span class="mi">76</span><span class="p">,</span>
+		<span class="s">"Emily"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ages</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  map[Bob:76 Emily:21 Joe:33 John:22 Mary:45]</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>This syntax is helpful if you want to create a map but populate the data for it at a later time and not immediately upon creation like we did in the previous example.</p>
+<p>We can get data out of a map, using the <code>[]</code> syntax, like so:</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">ages</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+		<span class="s">"John"</span><span class="p">:</span>  <span class="mi">22</span><span class="p">,</span>
+		<span class="s">"Mary"</span><span class="p">:</span>  <span class="mi">45</span><span class="p">,</span>
+		<span class="s">"Joe"</span><span class="p">:</span>   <span class="mi">33</span><span class="p">,</span>
+		<span class="s">"Bob"</span><span class="p">:</span>   <span class="mi">76</span><span class="p">,</span>
+		<span class="s">"Emily"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ages</span><span class="p">[</span><span class="s">"Joe"</span><span class="p">])</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  33</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>We can also add data to our maps like so:</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">ages</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+		<span class="s">"John"</span><span class="p">:</span>  <span class="mi">22</span><span class="p">,</span>
+		<span class="s">"Mary"</span><span class="p">:</span>  <span class="mi">45</span><span class="p">,</span>
+		<span class="s">"Joe"</span><span class="p">:</span>   <span class="mi">33</span><span class="p">,</span>
+		<span class="s">"Bob"</span><span class="p">:</span>   <span class="mi">76</span><span class="p">,</span>
+		<span class="s">"Emily"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="nx">ages</span><span class="p">[</span><span class="s">"Elliot"</span><span class="p">]</span> <span class="p">=</span> <span class="mi">55</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ages</span><span class="p">[</span><span class="s">"Elliot"</span><span class="p">])</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  55</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Something important to keep in mind is that when printing out a map, the order of the elements inside of the map is not guaranteed to be the same way in which they were added or declared, unlike <code>slices</code> or <code>arrays</code>.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">ages</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+		<span class="s">"John"</span><span class="p">:</span>  <span class="mi">22</span><span class="p">,</span>
+		<span class="s">"Mary"</span><span class="p">:</span>  <span class="mi">45</span><span class="p">,</span>
+		<span class="s">"Joe"</span><span class="p">:</span>   <span class="mi">33</span><span class="p">,</span>
+		<span class="s">"Bob"</span><span class="p">:</span>   <span class="mi">76</span><span class="p">,</span>
+		<span class="s">"Emily"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ages</span><span class="p">)</span>
+
+	<span class="nx">ages</span><span class="p">[</span><span class="s">"Elliot"</span><span class="p">]</span> <span class="p">=</span> <span class="mi">55</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ages</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  map[Bob:76 Emily:21 Joe:33 John:22 Mary:45]</span>
+<span class="cm">  map[Bob:76 Elliot:55 Emily:21 Joe:33 John:22 Mary:45]</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>We can remove items from a <code>map</code> using the <code>delete()</code> function.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">ages</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+		<span class="s">"John"</span><span class="p">:</span>  <span class="mi">22</span><span class="p">,</span>
+		<span class="s">"Mary"</span><span class="p">:</span>  <span class="mi">45</span><span class="p">,</span>
+		<span class="s">"Joe"</span><span class="p">:</span>   <span class="mi">33</span><span class="p">,</span>
+		<span class="s">"Bob"</span><span class="p">:</span>   <span class="mi">76</span><span class="p">,</span>
+		<span class="s">"Emily"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="nb">delete</span><span class="p">(</span><span class="nx">ages</span><span class="p">,</span> <span class="s">"Mary"</span><span class="p">)</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ages</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  map[Bob:76 Emily:21 Joe:33 John:22]</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Something to keep in mind when deleting items from a map is if you
+try to access a deleted item again; the compiler gives you a value of <code>0</code>.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">ages</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+		<span class="s">"John"</span><span class="p">:</span>  <span class="mi">22</span><span class="p">,</span>
+		<span class="s">"Mary"</span><span class="p">:</span>  <span class="mi">45</span><span class="p">,</span>
+		<span class="s">"Joe"</span><span class="p">:</span>   <span class="mi">33</span><span class="p">,</span>
+		<span class="s">"Bob"</span><span class="p">:</span>   <span class="mi">76</span><span class="p">,</span>
+		<span class="s">"Emily"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="nb">delete</span><span class="p">(</span><span class="nx">ages</span><span class="p">,</span> <span class="s">"Mary"</span><span class="p">)</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ages</span><span class="p">[</span><span class="s">"Mary"</span><span class="p">])</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  0</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Or let’s say you make a typo when trying to access a key.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">ages</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+		<span class="s">"John"</span><span class="p">:</span>  <span class="mi">22</span><span class="p">,</span>
+		<span class="s">"Mary"</span><span class="p">:</span>  <span class="mi">45</span><span class="p">,</span>
+		<span class="s">"Joe"</span><span class="p">:</span>   <span class="mi">33</span><span class="p">,</span>
+		<span class="s">"Bob"</span><span class="p">:</span>   <span class="mi">76</span><span class="p">,</span>
+		<span class="s">"Emily"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="nb">delete</span><span class="p">(</span><span class="nx">ages</span><span class="p">,</span> <span class="s">"Mary"</span><span class="p">)</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ages</span><span class="p">[</span><span class="s">"May"</span><span class="p">])</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  0</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>This can potentially be very problematic and confusing, so we can also use the <code>ok</code> variable to make sure the item is not in the map.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">ages</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+		<span class="s">"John"</span><span class="p">:</span>  <span class="mi">22</span><span class="p">,</span>
+		<span class="s">"Mary"</span><span class="p">:</span>  <span class="mi">45</span><span class="p">,</span>
+		<span class="s">"Joe"</span><span class="p">:</span>   <span class="mi">33</span><span class="p">,</span>
+		<span class="s">"Bob"</span><span class="p">:</span>   <span class="mi">76</span><span class="p">,</span>
+		<span class="s">"Emily"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="nb">delete</span><span class="p">(</span><span class="nx">ages</span><span class="p">,</span> <span class="s">"Mary"</span><span class="p">)</span>
+
+	<span class="nx">mary</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">ages</span><span class="p">[</span><span class="s">"Mary"</span><span class="p">]</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">mary</span><span class="p">,</span> <span class="nx">ok</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  0 false</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>The <code>ok</code> variable is false if the item does not exist in the map.<span class="intersentencespace"></span> True, if found.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">ages</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+		<span class="s">"John"</span><span class="p">:</span>  <span class="mi">22</span><span class="p">,</span>
+		<span class="s">"Mary"</span><span class="p">:</span>  <span class="mi">45</span><span class="p">,</span>
+		<span class="s">"Joe"</span><span class="p">:</span>   <span class="mi">33</span><span class="p">,</span>
+		<span class="s">"Bob"</span><span class="p">:</span>   <span class="mi">76</span><span class="p">,</span>
+		<span class="s">"Emily"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="nx">john</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">ages</span><span class="p">[</span><span class="s">"John"</span><span class="p">]</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">john</span><span class="p">,</span> <span class="nx">ok</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  22 true</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p><em><strong><code>ok</code> is not a special keyword or variable in Go, it is simply a convention that Go programmers follow.</strong></em><em></em></p>
+<p>If we need to get the length of our <code>map</code> we can use the <code>len()</code> function just like we do for <code>arrays</code> &amp; <code>slices</code>.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">ages</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+		<span class="s">"John"</span><span class="p">:</span>  <span class="mi">22</span><span class="p">,</span>
+		<span class="s">"Mary"</span><span class="p">:</span>  <span class="mi">45</span><span class="p">,</span>
+		<span class="s">"Joe"</span><span class="p">:</span>   <span class="mi">33</span><span class="p">,</span>
+		<span class="s">"Bob"</span><span class="p">:</span>   <span class="mi">76</span><span class="p">,</span>
+		<span class="s">"Emily"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">ages</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  5</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Maps are passed by reference, so if you make a copy of a map and change that copies data, you modify the original map.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">ages</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+		<span class="s">"John"</span><span class="p">:</span>  <span class="mi">22</span><span class="p">,</span>
+		<span class="s">"Mary"</span><span class="p">:</span>  <span class="mi">45</span><span class="p">,</span>
+		<span class="s">"Joe"</span><span class="p">:</span>   <span class="mi">33</span><span class="p">,</span>
+		<span class="s">"Bob"</span><span class="p">:</span>   <span class="mi">76</span><span class="p">,</span>
+		<span class="s">"Emily"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="nx">ages2</span> <span class="o">:=</span> <span class="nx">ages</span>
+
+	<span class="nb">delete</span><span class="p">(</span><span class="nx">ages2</span><span class="p">,</span> <span class="s">"Bob"</span><span class="p">)</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ages2</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ages</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  map[Emily:21 Joe:33 John:22 Mary:45]</span>
+<span class="cm">  map[Emily:21 Joe:33 John:22 Mary:45]</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid37" class="section"><h2><a href="go-basics-6-maps-in-go_fragment.xhtml#cid37" class="heading hyperref"><span class="number">6.1 </span>Wrap Up</a></h2>
+<p>In this article, we learned about how to create and work with maps in go.</p>
+</div><div id="cid38" class="section"><h2><a href="go-basics-6-maps-in-go_fragment.xhtml#cid38" class="heading hyperref"><span class="number">6.2 </span>Additional Resources</a></h2>
+<ul>
+<li> <a href="https://golang.org/pkg" rel="noopener">Golang.org Packages</a>
+</li>
+<li> <a href="https://gobyexample.com/" rel="noopener">Go by Example</a>
+</li>
+<li> <a href="https://www.youtube.com/watch?v=YS4e4q9oBaU" rel="noopener">Free Code Camp - Learn Go Programming for Beginners</a>
+</li></ul>
+</div>
+        </body>
+        </html>

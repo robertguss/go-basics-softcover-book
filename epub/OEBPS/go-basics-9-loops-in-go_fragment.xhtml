@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+        <!DOCTYPE html>
+
+        <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+          <title>Chapter 9</title>
+          <link rel="stylesheet" href="styles/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="styles/softcover.css" type="text/css" />
+          <link rel="stylesheet" href="styles/epub.css" type="text/css" />
+          <link rel="stylesheet" href="styles/custom.css" type="text/css"/>
+          <link rel="stylesheet" href="styles/custom_epub.css" type="text/css"/>
+          <link rel="stylesheet" type="application/vnd.adobe-page-template+xml" href="styles/page-template.xpgt" />
+        </head>
+
+        <body>
+          <div id="cid54" class="chapter"><h1><a href="go-basics-9-loops-in-go_fragment.xhtml#cid54" class="heading hyperref"><span class="number">Chapter 9 </span>Loops</a></h1>
+</div><div id="cid55" class="section"><h2><a href="go-basics-9-loops-in-go_fragment.xhtml#cid55" class="heading hyperref"><span class="number">9.1 </span>For loop</a></h2>
+<p>Looping in Go is rather straightforward as there is only one kind of loop in Go, the <code>for</code> loop.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">7</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  0</span>
+<span class="cm">  1</span>
+<span class="cm">  2</span>
+<span class="cm">  3</span>
+<span class="cm">  4</span>
+<span class="cm">  5</span>
+<span class="cm">  6</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>You can also initialize more than one variable within your <code>for</code> loop.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">7</span><span class="p">;</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">j</span><span class="o">+</span><span class="mi">1</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  0 0</span>
+<span class="cm">  1 1</span>
+<span class="cm">  2 2</span>
+<span class="cm">  3 3</span>
+<span class="cm">  4 4</span>
+<span class="cm">  5 5</span>
+<span class="cm">  6 6</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>Go also provides some nice ‘syntactic sugar’ to write our <code>for</code> loops to make them a little cleaner and easier to read.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">7</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+		<span class="nx">i</span><span class="o">++</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  0</span>
+<span class="cm">  1</span>
+<span class="cm">  2</span>
+<span class="cm">  3</span>
+<span class="cm">  4</span>
+<span class="cm">  5</span>
+<span class="cm">  6</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>It is also important to note that in the above example we are initializing the variable <code>i</code> above the <code>for</code> loop so we can get access to it later on.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">7</span> <span class="p">{</span>
+		<span class="nx">i</span><span class="o">++</span>
+	<span class="p">}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is: 7</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>In we initialize our variable, in this case <code>i</code>, within the <code>for</code> loop, then <code>i</code> is <code>scoped</code> to the loop and is not accessible outside of it.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">7</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+
+	<span class="p">}</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  undefined: i</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid56" class="section"><h2><a href="go-basics-9-loops-in-go_fragment.xhtml#cid56" class="heading hyperref"><span class="number">9.2 </span>Infinite Loops</a></h2>
+<p>Other programming languages have additional loops like <code>while</code> or <code>do</code> loops.<span class="intersentencespace"></span> These loops continue to loop for an indeterminate amount of time until some logic within the loop tells it to stop.<span class="intersentencespace"></span> We can achieve this same behavior using the <code>break</code> keyword.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="p">{</span>
+		<span class="nx">i</span><span class="o">++</span>
+
+		<span class="k">if</span> <span class="nx">i</span> <span class="o">==</span> <span class="mi">7</span> <span class="p">{</span>
+			<span class="k">break</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is: 7</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p><em><strong>If we forget to put in the <code>break</code> keyword this loop becomes an ‘infinite loop’ and causes our program to run out of memory and crash.</strong></em><em></em></p>
+<p>Go also has a <code>continue</code> keyword that allows us to have more control of when the code within our <code>for</code> loop executes.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">7</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+
+		<span class="c1">// if the number is even, continue the loop</span>
+		<span class="k">if</span> <span class="nx">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+			<span class="k">continue</span>
+		<span class="p">}</span>
+
+		<span class="c1">// if the number is odd, print the number</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  1</span>
+<span class="cm">  3</span>
+<span class="cm">  5</span>
+<span class="cm">*/</span>
+</pre></div></div>
+</div><div id="cid57" class="section"><h2><a href="go-basics-9-loops-in-go_fragment.xhtml#cid57" class="heading hyperref"><span class="number">9.3 </span>Looping through collections</a></h2>
+<p>When looping through collections, we use a ‘modified’ <code>for</code> loop and introduce a new keyword called <code>range</code>.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">s</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">}</span>
+
+	<span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">s</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  0 1</span>
+<span class="cm">  1 2</span>
+<span class="cm">  2 3</span>
+<span class="cm">  3 4</span>
+<span class="cm">  4 5</span>
+<span class="cm">  5 6</span>
+<span class="cm">  6 7</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>If you are not concerned about the <code>key</code> of the item in the collection, you can use <code>_</code> to ignore it.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">s</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">}</span>
+
+	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">s</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  1</span>
+<span class="cm">  2</span>
+<span class="cm">  3</span>
+<span class="cm">  4</span>
+<span class="cm">  5</span>
+<span class="cm">  6</span>
+<span class="cm">  7</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<p>This kind of loop can be used with <code>slices</code>, <code>arrays</code>, <code>maps</code>, and even <code>strings</code>.</p>
+<div class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">s</span> <span class="o">:=</span> <span class="s">"Hello, World!"</span>
+
+	<span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">s</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">  The result of the code above is:</span>
+<span class="cm">  0 72</span>
+<span class="cm">  1 101</span>
+<span class="cm">  2 108</span>
+<span class="cm">  3 108</span>
+<span class="cm">  4 111</span>
+<span class="cm">  5 44</span>
+<span class="cm">  6 32</span>
+<span class="cm">  7 87</span>
+<span class="cm">  8 111</span>
+<span class="cm">  9 114</span>
+<span class="cm">  10 108</span>
+<span class="cm">  11 100</span>
+<span class="cm">  12 33</span>
+<span class="cm">*/</span>
+</pre></div></div>
+<blockquote class="quotation"><p class="quote">Characters within a string are Unicode numbers in Go</p>
+</blockquote><p>You can find a list of all of the Unicode numbers <a href="https://www.ascii-code.com/" rel="noopener">here</a></p>
+</div><div id="cid58" class="section"><h2><a href="go-basics-9-loops-in-go_fragment.xhtml#cid58" class="heading hyperref"><span class="number">9.4 </span>Wrap Up</a></h2>
+<p>In this article, we learned how to create and work with loops in Go.</p>
+</div><div id="cid59" class="section"><h2><a href="go-basics-9-loops-in-go_fragment.xhtml#cid59" class="heading hyperref"><span class="number">9.5 </span>Additional Resources</a></h2>
+<ul>
+<li> <a href="https://gobyexample.com/" rel="noopener">Go by Example</a>
+</li>
+<li> <a href="https://www.youtube.com/watch?v=YS4e4q9oBaU" rel="noopener">Free Code Camp - Learn Go Programming for Beginners</a>
+</li></ul>
+</div>
+        </body>
+        </html>
